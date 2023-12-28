@@ -5,26 +5,25 @@ public class HashGame {
 	public static void main(String[] args) {
 		HashPlayer p1 = new HashPlayer(1);
 		HashPlayer p2 = new HashPlayer(2);
-		HashPlayer sys = new HashPlayer(0);
 		
 		boolean play = true;
-		Scanner s;
-		String r;
-		int round = 1;
+		Scanner s; // Declaring Scanner
+		String r; // Declaring String to be used as scanner input
+		int round = 1; // Holds what round the game is on
 		
 		System.out.println("Welcome to Tic-Tac-Toe");
 		while(play) {
-			sys.setBoard(); 
-			while(sys.getTurns() < 9 && !p1.checkWin() && !p2.checkWin()) {
+			HashPlayer.setBoard(); 
+			while(HashPlayer.turns < 9 && !p1.checkWin() && !p2.checkWin()) {
 				p1.nextMove();
-				sys.showBoard();
+				HashPlayer.showBoard();
 				
 				if(p1.checkWin()) {
 					break;
 				}
 				
 				p2.nextMove();
-				sys.showBoard();
+				HashPlayer.showBoard();
 			}
 			
 			// Winners:

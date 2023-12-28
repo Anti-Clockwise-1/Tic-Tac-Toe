@@ -1,31 +1,30 @@
 import java.util.*;
 
 public class HashPlayer implements PlayerInterface {
-	// Valid is Static so All Instances: Player 1 and Player 2 Share the Variable
-	static HashSet<Integer> used = new HashSet<Integer>();
-	static HashMap<Integer, String> bothMoves = new HashMap<Integer, String>();
-	static int turns = 0;
+	static HashSet<Integer> used = new HashSet<Integer>(); // Records moves that were played already
+	static HashMap<Integer, String> bothMoves = new HashMap<Integer, String>(); // Records moves by both players
+	static int turns = 0; // Count of total number of turns, shared by both players
 	
-	int no; // Player Number
-	HashSet<Integer> moves = new HashSet<Integer>();
-	int wins = 0;
+	int no; // Player Number, necessary to differentiate between different Players and assign Symbols (X and O)
+	HashSet<Integer> moves = new HashSet<Integer>(); // Records individual player's moves
+	int wins = 0; // Records individual player's win
 	
-	// Player Number
-	public HashPlayer(int z) {
-		no = z;
+	// Player Number --> Take in the player number to be used
+	public HashPlayer(int no) {
+		this.no = no;
 	}
 	
 	//Start Board
-	public void setBoard() {
+	public static void setBoard() {
         for(int i = 0; i < 9; i++) {
         	bothMoves.put(i, " ");
         }
 	}
 	
 	// Display Game Board
-	public void showBoard() {
+	public static void showBoard() {
         System.out.println("+---+---+---+");
-        for(int i = 0; i <= 6; i+=3) {
+        for(int i = 0; i <= 6; i += 3) {
         	System.out.print("| ");
         	System.out.print(bothMoves.get(i));
         	System.out.print(" | ");
@@ -107,11 +106,6 @@ public class HashPlayer implements PlayerInterface {
 				}
 			}
 		}
-	}
-	
-	// Get Turns
-	public Integer getTurns() {
-		return turns;
 	}
 	
 	// Display Results
