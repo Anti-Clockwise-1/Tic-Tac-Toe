@@ -4,6 +4,7 @@ public class HashPlayer implements PlayerInterface {
 	static HashSet<Integer> used = new HashSet<Integer>(); // Records moves that were played already
 	static HashMap<Integer, String> bothMoves = new HashMap<Integer, String>(); // Records moves by both players
 	static int turns = 0; // Count of total number of turns, shared by both players
+	static Scanner scan;
 	
 	int no; // Player Number, necessary to differentiate between different Players and assign Symbols (X and O)
 	HashSet<Integer> moves = new HashSet<Integer>(); // Records individual player's moves
@@ -64,32 +65,29 @@ public class HashPlayer implements PlayerInterface {
 	
 	// Next Move
 	public void nextMove() {
-		if(turns < 9) {		
-			@SuppressWarnings("resource") // There is a Scanner resource leak as there is no scan.close()
-			Scanner scan = new Scanner(System.in);
 			System.out.println("___________________________________\n");
 			System.out.println("Player " + no + " move: ");
 			System.out.println("\tPick a Position: (0 - 8)");
+			scan = new Scanner(System.in);	
 			boolean test = true;
 			int pos;
-			
-			while(test) {	
+
+			while(test) {
 				try {
 					pos = scan.nextInt();
-					
 					while(used.contains(pos) || pos < 0 || pos > 8) { // For Unusable Integer Values
 					    System.out.println();
 					    System.out.println("---Please choose a valid Position---\n");
 					    showBoard();
 					    pos = scan.nextInt();
 					}
-					used.add(pos);
 					if(no == 1) {
 						bothMoves.put(pos, "O");
 					}
 					else {
 						bothMoves.put(pos, "X");
 					}
+					used.add(pos);
 					moves.add(pos);
 					turns++;
 					test = false;
@@ -106,7 +104,6 @@ public class HashPlayer implements PlayerInterface {
 				}
 			}
 		}
-	}
 	
 	// Display Results
 	public void printResults() {

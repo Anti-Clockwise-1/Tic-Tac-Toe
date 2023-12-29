@@ -39,6 +39,7 @@ public class HashGame {
 				System.out.println("Tie");
 			}
 			
+
 			System.out.println("------------------------------------");
 			p1.printResults();
 			p2.printResults();
@@ -62,10 +63,10 @@ public class HashGame {
 			else {
 				System.out.println("_______________________________________________________________\n\nGame: " + round);
 			}
-
 		}
 		System.out.println("___________________________________\n\nThank you for Playing.");
 	// End of Main
+		HashPlayer.scan.close();
 	}
 
 // End of Class
