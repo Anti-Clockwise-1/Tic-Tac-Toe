@@ -33,9 +33,8 @@ public class HashPlayer implements PlayerInterface {
         	System.out.print(" | ");
         	System.out.print(bothMoves.get(i+2));
         	System.out.print(" |");
-        	System.out.println();
+        	System.out.println("\n+---+---+---+");
         }
-        System.out.println("+---+---+---+\n");
 	}
 	
 	// Clear Board
