@@ -80,25 +80,11 @@ public class ArrayPlayer implements PlayerInterface{
 	}	
 
 	public int getRow(int pos) {
-		for(int i = 0; i < dim; i++) {
-			for(int j = 0; j < dim; j++) {
-				if(i * dim + j == pos) {
-					return i;
-				}
-			}
-		}
-		return -1;
+		return pos / dim;
 	}
 	
 	public int getCol(int pos) {
-		for(int i = 0; i < dim; i++) {
-			for(int j = 0; j < dim; j++) {
-				if(i * dim + j == pos) {
-					return j;
-				}
-			}
-		}
-		return -1;
+		return pos % dim;
 	}
 	
 	public boolean check(int pos) {
